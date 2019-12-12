@@ -1,0 +1,21 @@
+How to
+<?php
+$servername = "localhost";
+$username = "sql-user-name-hre";
+$password = "password-here";
+$dbname = "database-name-here";
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$stmt2 = $conn->prepare("SELECT / UPDATE / INSET / Any SQL Query here");
+$stmt2->execute();
+$arr = $stmt2->fetch();
+if(!$arr) exit('No rows');
+
+then you write while loop to get results if you done SELECT SQL Query above...
+
+while($arr = $stmt2->fetch()) {
+echo "Here you get the sql table data by coloums $arr['column-name-here'] ";
+}
+
+?>
